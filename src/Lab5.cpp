@@ -27,11 +27,11 @@ void setup() {
 void loop() {
 
   //maps output to (0,255) then lights up the light with the power
-  potentiometer_voltage = analogRead(A5);
-  current_min = min(current_min, potentiometer_voltage);
-  current_max = max(current_max, potentiometer_voltage);
+  int lux_sensor_voltage = analogRead(A5);
+  current_min = min(current_min, lux_sensor_voltage);
+  current_max = max(current_max, lux_sensor_voltage);
 
-  int light_brightness = map(potentiometer_voltage, current_min, current_max, 0, 255);
+  int light_brightness = map(lux_sensor_voltage, current_min, current_max, 0, 255);
   analogWrite(D5, light_brightness);
   
 }
